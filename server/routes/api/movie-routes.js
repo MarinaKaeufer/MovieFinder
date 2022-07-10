@@ -4,7 +4,6 @@ const {
   testMovies
 } = require('../../controllers/movie-controller');
 
-router.route('/movies/:movieName').get(getMovies);
-router.route('/movies').get(testMovies);
+router.route('/movie/:movieName').get(getMovies);
 
 module.exports = router;

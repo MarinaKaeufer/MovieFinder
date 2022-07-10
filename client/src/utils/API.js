@@ -52,7 +52,7 @@ export const deleteMovie = (movieId, token) => {
 
 export const searchMovies = (query) => {
   console.log(`search movies...`);
-  return fetch(`/api/movies/${query}`)
+  return fetch(`/api/movies/movie/${query}`)
   .then(res => res.json())
   .then(json => { 
     console.log(json);
