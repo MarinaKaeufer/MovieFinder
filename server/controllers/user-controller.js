@@ -4,6 +4,10 @@ const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 module.exports = {
+  async testUser({ params }, res) {
+    console.log(`testUser in server...`);
+    return res.status(400).json({ message: 'test user end point not a valid end point' });
+  },
   // get a single user by either their id or their username
   async getSingleUser({ user = null, params }, res) {
     const foundUser = await User.findOne({

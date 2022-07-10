@@ -50,8 +50,12 @@ export const deleteMovie = (movieId, token) => {
   });
 };
 
-// make a search to google movies api
-// https://www.googleapis.com/movies/v1/volumes?q=harry+potter
-export const searchGoogleMovies = (query) => {
-  return fetch(`https://www.googleapis.com/movies/v1/volumes?q=${query}`);
+export const searchMovies = (query) => {
+  console.log(`search movies...`);
+  return fetch(`/api/movies/${query}`)
+  .then(res => res.json())
+  .then(json => { 
+    console.log(json);
+    return json;
+  });
 };

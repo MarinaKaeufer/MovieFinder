@@ -5,10 +5,13 @@ const {
   saveMovie,
   deleteMovie,
   login,
+  testUser,
 } = require('../../controllers/user-controller');
 
 // import middleware
 const { authMiddleware } = require('../../utils/auth');
+
+router.route('/test').get(testUser)
 
 // put authMiddleware anywhere we need to send a token for verification of user
 router.route('/').post(createUser).put(authMiddleware, saveMovie);
