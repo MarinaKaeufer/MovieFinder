@@ -1,12 +1,11 @@
 var axios = require('axios');
+require('dotenv').config()
 
 module.exports = {
   async getMovies({ params }, res) {
-    console.log(`getMovies in server...`);
     try {
-      const moviesFound = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ef26c2932545c6ea6aec330b557546ea&query=${params.movieName}`);
-      console.log(moviesFound.data);
-      res.json(moviesFound);
+      const moviesFound = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${params.movieName}`);
+      return res.json(moviesFound.data.results);
     } catch (err) {
         console.error(err);
     }

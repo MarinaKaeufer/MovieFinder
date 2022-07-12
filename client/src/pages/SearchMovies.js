@@ -22,7 +22,6 @@ const SearchMovies = () => {
 
   // create method to search for movies and set state on form submit
   const handleFormSubmit = async (event) => {
-    console.log(` Line 25`);
     event.preventDefault();
 
     if (!searchInput) {
@@ -30,25 +29,15 @@ const SearchMovies = () => {
     }
 
     try {
-      console.log(` Line 33`);
-      const response = await searchMovies(searchInput);
-      console.log(` Line 35`);
+      const items = await searchMovies(searchInput);
 
-
-      console.log(`==> response ${JSON.stringify(response)}`);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { items } = await response.json();
+      const baseImageUrl = 'https://image.tmdb.org/t/p/original';
 
       const movieData = items.map((movie) => ({
         movieId: movie.id,
-        authors: movie.volumeInfo.authors || ['No author to display'],
-        title: movie.volumeInfo.title,
-        description: movie.volumeInfo.description,
-        image: movie.volumeInfo.imageLinks?.thumbnail || '',
+        title: movie.title,
+        description: movie.overview,
+        image: `${baseImageUrl}/${movie.poster_path}` ,
       }));
 
       setSearchedMovies(movieData);
@@ -126,7 +115,6 @@ const SearchMovies = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{movie.title}</Card.Title>
-                  <p className='small'>Authors: {movie.authors}</p>
                   <Card.Text>{movie.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button

@@ -4,10 +4,6 @@ const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 module.exports = {
-  async testUser({ params }, res) {
-    console.log(`testUser in server...`);
-    return res.status(400).json({ message: 'test user end point not a valid end point' });
-  },
   // get a single user by either their id or their username
   async getSingleUser({ user = null, params }, res) {
     const foundUser = await User.findOne({
@@ -49,7 +45,6 @@ module.exports = {
   // save a movie to a user's `savedMovies` field by adding it to the set (to prevent duplicates)
   // user comes from `req.user` created in the auth middleware function
   async saveMovie({ user, body }, res) {
-    console.log(user);
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user._id },

@@ -50,12 +50,8 @@ export const deleteMovie = (movieId, token) => {
   });
 };
 
-export const searchMovies = (query) => {
-  console.log(`search movies...`);
-  return fetch(`/api/movies/movie/${query}`)
-  .then(res => res.json())
-  .then(json => { 
-    console.log(json);
-    return json;
-  });
+export const searchMovies = async (query) => {
+  const movies  = await fetch(`/api/movies/movie/${query}`);
+  let response = await movies.json();
+  return response;
 };
