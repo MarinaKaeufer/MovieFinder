@@ -36,7 +36,6 @@ const SavedMovies = () => {
     getUserData();
   }, [userDataLength]);
 
-  // create function that accepts the movie's mongo _id value as param and deletes the movie from the database
   const handleDeleteMovie = async (movieId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -53,14 +52,12 @@ const SavedMovies = () => {
 
       const updatedUser = await response.json();
       setUserData(updatedUser);
-      // upon success, remove movie's id from localStorage
       removeMovieId(movieId);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // if data isn't here yet, say so
   if (!userDataLength) {
     return <h2>LOADING...</h2>;
   }

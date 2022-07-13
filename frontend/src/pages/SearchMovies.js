@@ -6,21 +6,14 @@ import { saveMovie, searchMovies } from '../utils/API';
 import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
 
 const SearchMovies = () => {
-  // create state for holding returned google api data
   const [searchedMovies, setSearchedMovies] = useState([]);
-  // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
-
-  // create state to hold saved movieId values
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
-  // set up useEffect hook to save `savedMovieIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveMovieIds(savedMovieIds);
   });
 
-  // create method to search for movies and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 

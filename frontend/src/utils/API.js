@@ -1,4 +1,3 @@
-// route to get logged in user's info (needs the token)
 export const getMe = (token) => {
   return fetch('/api/users/me', {
     headers: {
@@ -28,7 +27,6 @@ export const loginUser = (userData) => {
   });
 };
 
-// save movie data for a logged in user
 export const saveMovie = (movieData, token) => {
   return fetch('/api/users', {
     method: 'PUT',
@@ -40,7 +38,6 @@ export const saveMovie = (movieData, token) => {
   });
 };
 
-// remove saved movie data for a logged in user
 export const deleteMovie = (movieId, token) => {
   return fetch(`/api/users/movies/${movieId}`, {
     method: 'DELETE',
