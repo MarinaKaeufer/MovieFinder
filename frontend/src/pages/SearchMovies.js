@@ -66,8 +66,12 @@ const SearchMovies = () => {
     }
   };
 
-  return (
-    <>
+  return ( 
+    <> 
+      
+
+
+
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
           <h1>Search for Movies!</h1>
