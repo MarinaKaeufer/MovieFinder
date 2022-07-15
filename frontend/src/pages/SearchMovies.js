@@ -103,41 +103,19 @@ const SearchMovies = () => {
         </h2>
 
 
-
-        <div class="card-deck">
-          
-          <div class="card">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-          </div>
-          
-        </div>
-        
-
-
-
-        <CardColumns>
+        <div class="card-columns">
           {searchedMovies.map((movie) => {
             return (
 
-
-              
-
-
-              <Card key={movie.movieId} border='dark'>
+              <div class="card" key={movie.movieId}>
                 {movie.image ? (
-                  <Card.Img src={movie.image} alt={`The cover for ${movie.title}`} variant='top' />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{movie.title}</Card.Title>
-                  <Card.Text>{movie.description}</Card.Text>
-                  {Auth.loggedIn() && (
+                <img class="card-img-top" src={movie.image} alt={`The cover for ${movie.title}`} />
+                ) : null }
+                <div class="card-body">
+                  <h5 class="card-title">{movie.title}</h5>
+                  <p class="card-text">{movie.description}</p>
+                </div>
+                {Auth.loggedIn() && (
                     <Button
                       disabled={savedMovieIds?.some((savedMovieId) => savedMovieId === movie.movieId)}
                       className='btn-block btn-info'
@@ -147,11 +125,13 @@ const SearchMovies = () => {
                         : 'Save this Movie!'}
                     </Button>
                   )}
-                </Card.Body>
-              </Card>
+                <div class="card-footer">
+                  <small class="text-muted">This feature has not been rated yet...</small>
+                </div>
+              </div>
             );
           })}
-        </CardColumns>
+        </div>
       </Container>
     </>
   );

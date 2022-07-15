@@ -2,7 +2,7 @@ Container {
     text-align: center;
 }
 
-.searchButton {
+button {
     margin-top: 2%;
     background-color: #ff1f8f !important;
     border-color: #ff1f8f !important;
