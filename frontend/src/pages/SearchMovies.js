@@ -68,31 +68,29 @@ const SearchMovies = () => {
 
   return ( 
     <> 
-      
-
-
-
-      <Jumbotron fluid className='text-light bg-dark'>
+      <Jumbotron fluid className='text-dark bg-light' style={{ 
+        backgroundImage: `url("movies.jpg")` 
+      }}>
         <Container>
-          <h1>Search for Movies!</h1>
+          <span className="movieTitle">Movies!</span>
           <Form onSubmit={handleFormSubmit}>
-            <Form.Row>
-              <Col xs={12} md={8}>
+            
+              
                 <Form.Control
+                  size='lg'
+                  type='text'
                   name='searchInput'
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  type='text'
-                  size='lg'
-                  placeholder='Search for a movie'
+                  placeholder='Type in a Movie name...'
                 />
-              </Col>
-              <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
-                  Submit Search
+              
+              
+                <Button className="searchButton" type='submit' variant='success' size='lg'>
+                  Search
                 </Button>
-              </Col>
-            </Form.Row>
+              
+            
           </Form>
         </Container>
       </Jumbotron>

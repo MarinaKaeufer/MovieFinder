@@ -1,0 +1,28 @@
+Container {
+    text-align: center;
+}
+
+.searchButton {
+    margin-top: 2%;
+    background-color: #ff1f8f !important;
+    border-color: #ff1f8f !important;
+}
+
+form {
+    text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900i&display=swap');
+
+
+.movieTitle {
+  transform: translate(-50%, -50%);
+  font-size:60px;
+	letter-spacing:0.1em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+  text-shadow: 
+    8px 8px #ff1f8f,
+    20px 20px #000000;
+}
