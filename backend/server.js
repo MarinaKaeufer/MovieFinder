@@ -1,5 +1,8 @@
 const express = require('express');
 const path = require('path');
+
+console.log(`===> process.env.MONGODB_URI ${process.env.MONGODB_URI}`)
+
 const db = require('./config/connection');
 const routes = require('./routes');
 
