@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-// TODO Change database name
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlemovies', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/movies', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
