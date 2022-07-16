@@ -16,7 +16,7 @@ module.exports = {
 
     res.json(foundUser);
   },
-  // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
+  // create a user, sign a token, and send it back (to frontend/src/components/SignUpForm.js)
   async createUser({ body }, res) {
     const user = await User.create(body);
 
@@ -26,7 +26,7 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // login a user, sign a token, and send it back (to client/src/components/LoginForm.js)
+  // login a user, sign a token, and send it back (to frontend/src/components/LoginForm.js)
   // {body} is destructured req.body
   async login({ body }, res) {
     const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
