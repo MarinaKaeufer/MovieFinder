@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
+
 console.log(`===> process.env.MONGODB_URI ${process.env.MONGODB_URI}`)
 
 const db = require('./config/connection');
