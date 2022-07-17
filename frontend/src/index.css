@@ -26,3 +26,11 @@ form {
     8px 8px #ff1f8f,
     20px 20px #000000;
 }
+
+#deleteButton {
+  margin-top: 4%;
+}
+
+#editButton {
+  background-color: darkgreen !important;
+}

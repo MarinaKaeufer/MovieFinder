@@ -23,6 +23,9 @@ const { Schema } = require('mongoose');const movieSchema = new Schema({
     type: String,
     required: true,
   },
+  notes: {
+    type: String
+  }
 });
 
 module.exports = movieSchema;
