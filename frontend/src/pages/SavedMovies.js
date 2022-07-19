@@ -74,18 +74,15 @@ const SavedMovies = () => {
 
     try {
       const note = document.getElementById(`note-${movie.movieId}`).value;
-      console.log(`new note ${note}`);
-      const updatedMovie = {...movie,note:note}
-      console.log(`updatedMovie ${JSON.stringify(updatedMovie)}`);
+      const updatedMovie = {...movie,notes:note}
       const response = await editMovie(userId, updatedMovie, token);
 
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
 
-      // const updatedUser = await response.json();
-      // TODO Do we need to do this?
-      // setUserData(updatedUser);
+      const updatedUser = await response.json();
+      setUserData(updatedUser);
     } catch (err) {
       console.error(err);
     }

@@ -67,27 +67,17 @@ module.exports = {
 
   async editMovie({ body }, res) {
     try {
-      console.log(` `);
-      console.log(` `);
-      console.log(`body ${JSON.stringify(body)}`);
-      console.log(`body movie ${JSON.stringify(body.movie)}`);
-      console.log(`body user ${JSON.stringify(body.userId)}`);
       const foundUser = await User.find({
         _id: body.userId }
       );
-
-      console.log(`foundUser ${JSON.stringify(foundUser)}`);
-
       const savedMovies = foundUser[0]['savedMovies'];
       const updatedMovies = savedMovies.map(movie => {
         if(movie.movieId === body.movie.movieId){
           return body.movie;
         } else {
-          movie;
+          return movie;
         }
       })
-      console.log(`updatedMovies ${JSON.stringify(updatedMovies)}`);
-
       const updatedUser = await User.findOneAndUpdate(
         { _id: body.userId },
         { $set: { savedMovies: updatedMovies } },

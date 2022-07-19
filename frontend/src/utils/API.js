@@ -48,9 +48,6 @@ export const deleteMovie = (movieId, token) => {
 };
 
 export const editMovie = (userId, movieData, token) => {
-  console.log(` `);
-  console.log(`userId ${JSON.stringify(userId)}`);
-  console.log(`movieData ${JSON.stringify(movieData)}`);
   return fetch(`/api/users/movies`, {
     method: 'PUT',
     headers: {
@@ -60,7 +57,6 @@ export const editMovie = (userId, movieData, token) => {
     body: JSON.stringify({movie: movieData, userId: userId}),
   });
 };
-
 
 export const searchMovies = async (query) => {
   const movies  = await fetch(`/api/movies/movie/${query}`);

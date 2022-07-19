@@ -40,12 +40,8 @@ const SearchMovies = () => {
     }
   };
 
-  // create function to handle saving a movie to our database
   const handleSaveMovie = async (movieId) => {
-    // find the movie in `searchedMovies` state by the matching id
     const movieToSave = searchedMovies.find((movie) => movie.movieId === movieId);
-
-    // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -58,8 +54,6 @@ const SearchMovies = () => {
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
-
-      // if movie successfully saves to user's account, save movie id to state
       setSavedMovieIds([...savedMovieIds, movieToSave.movieId]);
     } catch (err) {
       console.error(err);
