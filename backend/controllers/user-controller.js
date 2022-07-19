@@ -1,10 +1,7 @@
-// import user model
 const { User } = require('../models');
-// import sign token function from auth
 const { signToken } = require('../utils/auth');
 
 module.exports = {
-  // get a single user by either their id or their username
   async getSingleUser({ user = null, params }, res) {
     const foundUser = await User.findOne({
       $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
@@ -16,7 +13,7 @@ module.exports = {
 
     res.json(foundUser);
   },
-  // create a user, sign a token, and send it back (to frontend/src/components/SignUpForm.js)
+  
   async createUser({ body }, res) {
     const user = await User.create(body);
 
@@ -26,8 +23,7 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // login a user, sign a token, and send it back (to frontend/src/components/LoginForm.js)
-  // {body} is destructured req.body
+  
   async login({ body }, res) {
     const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
     if (!user) {
@@ -42,8 +38,7 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // save a movie to a user's `savedMovies` field by adding it to the set (to prevent duplicates)
-  // user comes from `req.user` created in the auth middleware function
+  
   async saveMovie({ user, body }, res) {
     try {
       const updatedUser = await User.findOneAndUpdate(
@@ -57,7 +52,7 @@ module.exports = {
       return res.status(400).json(err);
     }
   },
-  // remove a movie from `savedMovies`
+  
   async deleteMovie({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
@@ -68,5 +63,40 @@ module.exports = {
       return res.status(404).json({ message: "Couldn't find user with this id!" });
     }
     return res.json(updatedUser);
+  },
+
+  async editMovie({ body }, res) {
+    try {
+      console.log(` `);
+      console.log(` `);
+      console.log(`body ${JSON.stringify(body)}`);
+      console.log(`body movie ${JSON.stringify(body.movie)}`);
+      console.log(`body user ${JSON.stringify(body.userId)}`);
+      const foundUser = await User.find({
+        _id: body.userId }
+      );
+
+      console.log(`foundUser ${JSON.stringify(foundUser)}`);
+
+      const savedMovies = foundUser[0]['savedMovies'];
+      const updatedMovies = savedMovies.map(movie => {
+        if(movie.movieId === body.movie.movieId){
+          return body.movie;
+        } else {
+          movie;
+        }
+      })
+      console.log(`updatedMovies ${JSON.stringify(updatedMovies)}`);
+
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: body.userId },
+        { $set: { savedMovies: updatedMovies } },
+        { new: true, runValidators: true }
+      );
+      return res.json(updatedUser);
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json(err);
+    }
   },
 };
