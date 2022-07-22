@@ -31,6 +31,10 @@ This project focused on creating and executing a full stack web application to h
 
 The webpage includes buttons and options: "Search movie", "Login/Sign up", "Save Movie" (after you login), "Notes/Edit notes"- after you saved the movie, "Delete this Movie. 
 
+
+<img width="1235" alt="Screen Shot 2022-07-22 at 2 03 35 AM" src="https://user-images.githubusercontent.com/100238144/180374568-5314d35f-90fc-44c1-8288-51e145c75187.png">
+
+
 ## Built with: 
 • HTML • CSS • JavaScript • React • MongoDB • Mongoose • Node • GraphQL • Bcrypt • Dotenv • Heroku
 
