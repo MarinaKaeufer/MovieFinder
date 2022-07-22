@@ -27,7 +27,7 @@
 * Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 ## Purpose: 
-This project focused on creating and executing a full stack web application to help users to search thousands of movies and shows within a few seconds. The application allows user to find movie, save movie, add notes to the saved movie and add/edit notes and delete the movie (after the user is logged in). 
+This project focused on creating and executing a full stack web application to help users to search thousands of movies and shows within a few seconds. The application allows user to find movie, save movie, add/edit notes to the already saved movie and delete the movie (after the user is logged in). 
 
 The webpage includes buttons and options: "Search movie", "Login/Sign up", "Save Movie" (after you login), "Notes/Edit notes"- after you saved the movie, "Delete this Movie. 
 
